@@ -9,8 +9,8 @@
     "enableChart": true
   },
   "telegram": {
-    "token": "TOKEN",
-    "chat": "-1CHAT_ID",
+    "token": "токен",
+    "chat": "id чата",
     "replyTo": ""
   }
 }

@@ -1,16 +1,58 @@
 curl -X POST \
      -H 'Content-Type: application/json' \
-     -d '{"chat_id": "-1001669708521", "text": "This is a test from curl", "disable_notification": false}' \
+     -d '{"chat_id": "id чата", "text": "This is a test from curl", "disable_notification": false}' \
      https://api.telegram.org/botTOKEN/sendMessage
+______
+если из идейки (перенести allure-report в папку build )
+{
+  "base": {
+    "project": "some project",
+    "environment": "some env",
+    "comment": "some comment",
+    "reportLink": "",
+    "language": "en",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "токен",
+    "chat": "id чата",
+    "replyTo": ""
+  }
+}
 
     java \
     "-DconfigFile=notifications/telegram.json" \
     -jar allure-notifications-4.2.1.jar
-_____
+_________
+
+{
+  "base": {
+    "project": "${JOB_BASE_NAME}",
+    "environment": "some env",
+    "comment": "some comment",
+    "reportLink": "${BUILD_URL}",
+    "language": "en",
+    "messenger": "telegram",
+    "allureFolder": "allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "токен",
+    "chat": "id чата",
+    "replyTo": ""
+  }
+}
+
+    java \
+    "-DconfigFile=notifications/telegram.json" \
+    -jar allure-notifications-4.2.1.jar
+
+ ИЛИ
     cd ..
     FILE=./allure-notifications-4.2.1.jar
     if [ ! -f "$FILE" ]; then
        wget https://github.com/qa-guru/allure-notifications/releases/download/4.2.1/allure-notifications-4.2.1.jar
     fi
 
-    java "-DconfigFile=notifications/telegram.json" -jar ../allure-notifications-4.1.jar
+    java "-DconfigFile=notifications/telegram.json" -jar ../allure-notifications-4.2.1.jar
