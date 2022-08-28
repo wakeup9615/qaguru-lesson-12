@@ -6,3 +6,11 @@ curl -X POST \
     java \
     "-DconfigFile=notifications/telegram.json" \
     -jar allure-notifications-4.2.1.jar
+_____
+    cd ..
+    FILE=./allure-notifications-4.2.1.jar
+    if [ ! -f "$FILE" ]; then
+       wget https://github.com/qa-guru/allure-notifications/releases/download/4.2.1/allure-notifications-4.2.1.jar
+    fi
+
+    java "-DconfigFile=notifications/telegram.json" -jar ../allure-notifications-4.1.jar
